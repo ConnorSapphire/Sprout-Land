@@ -1,7 +1,6 @@
 import pygame
-from pygame.sprite import AbstractGroup
-from settings import *
-from support import *
+from .settings import *
+from .support import *
 from random import choice
 from pytmx.util_pygame import load_pygame
 
@@ -25,7 +24,7 @@ class Plant(pygame.sprite.Sprite):
         
         # setup
         self.plant_type = plant_type
-        self.frames = import_folder(f'../graphics/fruit/{self.plant_type}')
+        self.frames = import_folder(f'./graphics/fruit/{self.plant_type}')
         self.soil = soil
         
         # plant growth
@@ -67,8 +66,8 @@ class SoilLayer:
         self.plant_sprites = pygame.sprite.Group()
         
         # graphics
-        self.soil_surfs = import_folder_dict('../graphics/soil')
-        self.water_surfs = import_folder('../graphics/soil_water')
+        self.soil_surfs = import_folder_dict('./graphics/soil')
+        self.water_surfs = import_folder('./graphics/soil_water')
         
         # setup
         self.raining = raining
@@ -76,18 +75,18 @@ class SoilLayer:
         self.create_hit_rects()
         
         # audio
-        self.hoe_sound = pygame.mixer.Sound('../audio/hoe.wav')
+        self.hoe_sound = pygame.mixer.Sound('./audio/hoe.wav')
         self.hoe_sound.set_volume(0.3)
         
-        self.plant_sound = pygame.mixer.Sound('../audio/plant.wav')
+        self.plant_sound = pygame.mixer.Sound('./audio/plant.wav')
         self.plant_sound.set_volume(0.2)
         
     def create_soil_grid(self):
-        ground = pygame.image.load('../graphics/world/ground.png')
+        ground = pygame.image.load('./graphics/world/ground.png')
         h_tiles, v_tiles = ground.get_width() // TILE_SIZE, ground.get_height() // TILE_SIZE
         
         self.grid = [ [[] for col in range(h_tiles)] for row in range(v_tiles) ]
-        for x, y, _ in load_pygame('../data/map.tmx').get_layer_by_name('Farmable').tiles():
+        for x, y, _ in load_pygame('./data/map.tmx').get_layer_by_name('Farmable').tiles():
             self.grid[y][x].append('F')
         
     def create_hit_rects(self):

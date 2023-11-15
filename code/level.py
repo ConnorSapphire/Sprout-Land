@@ -1,13 +1,13 @@
 import pygame 
-from settings import *
-from player import Player
-from overlay import Overlay
-from sprites import Generic, Barrier, VerticalBarrier, HorizontalBarrier, Water, WildFlower, Tree, Interaction, Particle
-from support import *
-from transition import Transition
-from soil import SoilLayer
-from sky import Rain, Sky
-from menu import Menu
+from .settings import *
+from .player import Player
+from .overlay import Overlay
+from .sprites import Generic, Barrier, VerticalBarrier, HorizontalBarrier, Water, WildFlower, Tree, Interaction, Particle
+from .support import *
+from .transition import Transition
+from .soil import SoilLayer
+from .sky import Rain, Sky
+from .menu import Menu
 from pytmx.util_pygame import load_pygame
 from random import randint
 
@@ -40,15 +40,15 @@ class Level:
 		self.menu = Menu(self.player, self.toggle_shop, self.player.timers['interaction'])
   
 		# audio
-		self.success = pygame.mixer.Sound('../audio/success.wav')
+		self.success = pygame.mixer.Sound('./audio/success.wav')
 		self.success.set_volume(0.3)
   
-		self.music = pygame.mixer.Sound('../audio/music.mp3')
+		self.music = pygame.mixer.Sound('./audio/music.mp3')
 		self.music.set_volume(0.3)
 		self.music.play(loops=-1)
   
 	def setup(self):
-		tmx_data = load_pygame('../data/map.tmx')
+		tmx_data = load_pygame('./data/map.tmx')
   
 		# house
 		# bottom
@@ -65,7 +65,7 @@ class Level:
 			Generic((x * TILE_SIZE, y * TILE_SIZE), surf, [self.all_sprites, self.collision_sprites])
    
 		# water
-		water_frames = import_folder('../graphics/water')
+		water_frames = import_folder('./graphics/water')
 		for x, y, surf in tmx_data.get_layer_by_name('Water').tiles():
 			Water((x * TILE_SIZE, y * TILE_SIZE), water_frames, self.all_sprites)
 
@@ -84,7 +84,7 @@ class Level:
 		# ground
 		Generic(
 			pos = (0,0),
-			surf = pygame.image.load('../graphics/world/ground.png').convert_alpha(),
+			surf = pygame.image.load('./graphics/world/ground.png').convert_alpha(),
 			groups = self.all_sprites,
 			z = LAYERS['ground']
 		)

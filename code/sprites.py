@@ -1,7 +1,7 @@
 import pygame
-from settings import *
+from .settings import *
+from .timer import Timer
 from random import randint, choice
-from timer import Timer
 
 class Generic(pygame.sprite.Sprite):
     def __init__(self, pos, surf, groups, z = LAYERS['main']):
@@ -79,11 +79,11 @@ class Tree(Generic):
         # tree attributes
         self.health = 5
         self.alive = True
-        stump_path = f'../graphics/stumps/{"small" if name == "Small" else "large"}.png'
+        stump_path = f'./graphics/stumps/{"small" if name == "Small" else "large"}.png'
         self.stump_surf = pygame.image.load(stump_path).convert_alpha()
         
         # apples
-        self.apples_surf = pygame.image.load('../graphics/fruit/apple.png')
+        self.apples_surf = pygame.image.load('./graphics/fruit/apple.png')
         self.apple_pos = APPLE_POS[name]
         self.apple_sprites = pygame.sprite.Group()
         self.create_fruit()
@@ -92,7 +92,7 @@ class Tree(Generic):
         self.player_add = player_add
         
         # sounds
-        self.axe_sound = pygame.mixer.Sound('../audio/axe.mp3')
+        self.axe_sound = pygame.mixer.Sound('./audio/axe.mp3')
         
     def create_fruit(self):
         for pos in self.apple_pos:

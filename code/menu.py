@@ -1,6 +1,6 @@
 import pygame
-from settings import *
-from timer import Timer
+from .settings import *
+from .timer import Timer
 
 class Menu:
     def __init__(self, player, toggle_menu, toggle_timer):
@@ -8,7 +8,7 @@ class Menu:
         # setup
         self.wheel = 0
         self.display_surface = pygame.display.get_surface()
-        self.font = pygame.font.Font('../font/LycheeSoda.ttf', 30)
+        self.font = pygame.font.Font('./font/LycheeSoda.ttf', 30)
         self.player = player
         self.toggle_menu = toggle_menu
         self.toggle_timer = toggle_timer
@@ -29,7 +29,7 @@ class Menu:
         self.timer = Timer(150)
         
         # audio
-        self.success = pygame.mixer.Sound('../audio/success.wav')
+        self.success = pygame.mixer.Sound('./audio/success.wav')
         self.success.set_volume(0.3)
         
     def setup(self):

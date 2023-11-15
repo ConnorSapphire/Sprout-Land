@@ -1,7 +1,7 @@
 import pygame
-from settings import *
-from support import *
-from timer import Timer
+from .settings import *
+from .support import *
+from .timer import Timer
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, group, collision_sprites, tree_sprites, interaction_sprites, soil_layer, toggle_shop):
@@ -68,7 +68,7 @@ class Player(pygame.sprite.Sprite):
         self.toggle_shop = toggle_shop
         
         # audio
-        self.watering = pygame.mixer.Sound('../audio/water.mp3')
+        self.watering = pygame.mixer.Sound('./audio/water.mp3')
         self.watering.set_volume(0.2)
         
     def import_assets(self):
@@ -78,7 +78,7 @@ class Player(pygame.sprite.Sprite):
                            'up_axe':[], 'down_axe':[], 'left_axe':[], 'right_axe':[],
                            'up_water':[], 'down_water':[], 'left_water':[], 'right_water':[]}
         for animation in self.animations.keys():
-            full_path = '../graphics/character/' + animation
+            full_path = './graphics/character/' + animation
             self.animations[animation] = import_folder(full_path)
         
     def animate(self, dt):
