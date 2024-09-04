@@ -1,20 +1,27 @@
-# SPROUT LAND
-Personal project based on Clear Code (Youtube) project.
+# Sprout Land
 
-Assets thanks to Cup Noodle (itch.io).
+**Sprout Land** is a Stardew Valley-inspired farming simulator developed using Pygame. This project is a personal exploration based on a tutorial by Clear Code (YouTube), with assets provided by Cup Noodle (itch.io).
 
-## TO RUN
-Navigate to the home directory.
+## Features
 
-Use python to run:
+- **Farming Simulation:** Engage in various farming activities similar to those in Stardew Valley.
+- **Custom Assets:** Includes custom graphics, audio, and fonts for an immersive experience.
 
-```python SproutLand.py```
+## Installation
 
-## REQUIREMENTS
-python 3.11.4 + : ```https://www.python.org/downloads/```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ConnorSapphire/Sprout-Land.git
+   ```
+2. **Install Python 3.11.4+ and dependencies:**
+   ```bash
+   pip install pygame pytmx
+   ```
+3. **Run the game:**
+   ```bash
+   python SproutLand.py
+   ```
 
-pygame 2.5.2 + :
-```pip install pygame```
+## License
 
-pytmx 3.32 + :
-```pip install pytmx```
+This project is licensed under the MIT License.
